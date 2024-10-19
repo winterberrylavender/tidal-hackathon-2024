@@ -7,15 +7,19 @@ map_bounds = {
     'bottom_right': {'lat': 24.396308, 'lon': -66.93457}  # Bottom-right corner (lat, lon)
 }
 
+
 def calculate_lat_lon(click_x, click_y, img_width, img_height):
     """
     Calculate latitude and longitude based on click position and map dimensions.
     """
     # Calculate latitude
-    lat = map_bounds['top_left']['lat'] - (click_y / img_height) * (map_bounds['top_left']['lat'] - map_bounds['bottom_right']['lat'])
+    lat = map_bounds['top_left']['lat'] - (click_y / img_height) * (
+                map_bounds['top_left']['lat'] - map_bounds['bottom_right']['lat'])
     # Calculate longitude
-    lon = map_bounds['top_left']['lon'] + (click_x / img_width) * (map_bounds['bottom_right']['lon'] - map_bounds['top_left']['lon'])
+    lon = map_bounds['top_left']['lon'] + (click_x / img_width) * (
+                map_bounds['bottom_right']['lon'] - map_bounds['top_left']['lon'])
     return lat, lon
+
 
 def on_click(event):
     """
@@ -32,6 +36,7 @@ def on_click(event):
 
     # Display the calculated latitude and longitude
     label.config(text=f"Latitude: {lat:.6f}, Longitude: {lon:.6f}")
+
 
 # Initialize Tkinter window
 root = tk.Tk()
