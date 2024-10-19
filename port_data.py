@@ -41,3 +41,4 @@ user_lon = float(input("Enter your longitude: "))
 # Find and display the closest port
 closest_port = find_closest_port(user_lat, user_lon)
 print(f"The closest port is {closest_port['name']} in {closest_port['country_code']} at a distance of {closest_port['distance']:.2f} km.")
+print(f"The latitude is {closest_port['latitude']} and the longitude is {closest_port['longitude']}")
