@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #81aae0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#map {
+    height: 400px;
+    margin-bottom: 20px;
+}
+
+form {
+    margin: 20px 0;
+}
+
+input[type="date"], input[type="time"], button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.prediction-result {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
