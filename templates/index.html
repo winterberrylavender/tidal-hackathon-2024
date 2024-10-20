@@ -37,6 +37,8 @@
             <p id="patch-location"></p>
             <p id="trash-amount"></p>
             <p id="port-location"></p>
+            <p id="port-latitude"></p>
+            <p id="port-longitude"></p>
         </div>
     </div>
 
@@ -79,6 +81,8 @@
         document.getElementById('patch-location').textContent = 'Closest Trash Patch: ' + result.patchLocation;
         document.getElementById('trash-amount').textContent = 'Estimated Trash Amount: ' + result.trashAmount;
         document.getElementById('port-location').textContent = 'Closest Port: ' + result.portLocation;
+        document.getElementById('port-latitude').textContent = 'Port Latitude: ' + result.portLatitude;
+        document.getElementById('port-longitude').textContent = 'Port Longitude: ' + result.portLongitude;
         document.getElementById('result').style.display = 'block';
     };
 
