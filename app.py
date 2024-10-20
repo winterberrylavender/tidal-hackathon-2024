@@ -1,4 +1,11 @@
 from flask import Flask, render_template, request, jsonify
+import tensorflow as tf
+import numpy as np
+
+import ml_interact
+# Load the model
+#from tensorflow.python.keras.engine.training_v1 import Model
+
 import port_data
 import folium
 app = Flask(__name__)
@@ -17,7 +24,7 @@ def predict():
     close = port_data.find_closest_port(latitude, longitude)
     port_latitude=float(close['latitude'])
     port_longitude=float(close['longitude'])
-
+    trash_latitude, trash_longitude = ml_interact.interact(latitude,longitude)
     # Simulated result for demonstration purposes
     result = {
         'patchLocation': longitude,
@@ -25,6 +32,8 @@ def predict():
         'portLocation': close['name'],
         'portLatitude': port_latitude,
         'portLongitude': port_longitude,
+        'trashLatitude': trash_latitude,
+        'trashLongitude': trash_longitude,
     }
 
     return jsonify(result)
