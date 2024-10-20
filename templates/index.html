@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Ocean Trash Predictor</title>
+</head>
+<body>
+    <div id="fade-screen" class="fade-screen">
+        <div class="centered">
+            <h1>PLUH</h1>
+            <button id="enter-site-btn">Enter</button>
+        </div>
+    </div>
+
+    <div class="container" id="main-content" style="display: none;">
+        <h1>Ocean Trash Predictor</h1>
+
+        <div id="map"></div>
+        
+        <form id="prediction-form">
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" min="0000-01-01" max="2030-12-31" required>
+            <br>
+            <label for="time">Time:</label>
+            <input type="time" id="time" required>
+            <br>
+            <input type="hidden" id="latitude" required>
+            <input type="hidden" id="longitude" required>
+            <button type="submit">Predict Trash Location</button>
+        </form>
+
+        <div id="result" class="prediction-result" style="display: none;">
+            <h2>Prediction Result</h2>
+            <p id="patch-location"></p>
+            <p id="trash-amount"></p>
+            <p id="port-location"></p>
+            <p id="port-latitude"></p>
+            <p id="port-longitude"></p>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+    const map = L.map('map').setView([37.8, -96], 4); // Default center in the USA
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    let marker;
+
+    map.on('click', function(e) {
+        if (marker) {
+            map.removeLayer(marker);
+        }
+        marker = L.marker(e.latlng).addTo(map);
+        document.getElementById('latitude').value = e.latlng.lat;
+        document.getElementById('longitude').value = e.latlng.lng;
+    });
+
+    document.getElementById('prediction-form').onsubmit = async function(event) {
+        event.preventDefault();
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+        const latitude = document.getElementById('latitude').value;
+        const longitude = document.getElementById('longitude').value;
+
+        const response = await fetch('/predict', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ date, time, latitude, longitude })
+        });
+
+        const result = await response.json();
+        document.getElementById('patch-location').textContent = 'Closest Trash Patch: ' + result.patchLocation;
+        document.getElementById('trash-amount').textContent = 'Estimated Trash Amount: ' + result.trashAmount;
+        document.getElementById('port-location').textContent = 'Closest Port: ' + result.portLocation;
+        document.getElementById('port-latitude').textContent = 'Port Latitude: ' + result.portLatitude;
+        document.getElementById('port-longitude').textContent = 'Port Longitude: ' + result.portLongitude;
+        document.getElementById('result').style.display = 'block';
+    };
+
+    // Fade in effect
+    document.getElementById('enter-site-btn').addEventListener('click', function() {
+        document.getElementById('fade-screen').classList.add('fade-out');
+        setTimeout(() => {
+            document.getElementById('fade-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            
+            // Invalidate the map size so it fully renders after the fade
+            setTimeout(() => {
+                map.invalidateSize();
+            }, 0); // Ensure it's called immediately after the display change
+        }, 1000); // Matches CSS transition duration
+    });
+</script>
+</body>
+</html>

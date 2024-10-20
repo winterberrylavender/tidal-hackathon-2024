@@ -1,0 +1,81 @@
+/* Style for the fade screen */
+.fade-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #282c34;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 1s ease-out;
+}
+
+h1 {
+    text-align: center;
+    color: #e94560; /* Bold color for header */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+input[type="date"], input[type="time"], button {
+    margin: 10px;
+    padding: 20px;
+    font-size: 16px;
+    border-radius: 20px;
+    border: none;
+}
+
+.centered {
+    text-align: center;
+}
+
+#enter-site-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.fade-screen.fade-out {
+    opacity: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+}
+
+
+#map {
+    height: 400px;
+    margin-bottom: 20px;
+    border: 5px solid #e94560; /* Bold border color */
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+form {
+    text-align: center;
+    margin: 20px 0;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background-color: #1a1a2e; /* Darker background for a bold look */
+    color: #e0e0e0; /* Light text for contrast */
+    margin: 0;
+    padding: 0;
+}
+
+.prediction-result {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #16213e; 
+    border-radius: 8px;
+    border: 5px solid #e94560;
+}
