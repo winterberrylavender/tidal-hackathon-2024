@@ -22,6 +22,7 @@ h1 {
 #map {
     height: 400px;
     margin-bottom: 20px;
+    border: 5px solid #e94560; /* Bold border color */
     border-radius: 8px; 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
