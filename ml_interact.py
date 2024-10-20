@@ -42,7 +42,7 @@ def interact(start_lat, start_lon):
 
     # Accessing the predicted latitude and longitude from the prediction
     predicted_latitude = prediction[0][0]  # First value: latitude
-    predicted_longitude = (start_lon - (0.7(start_lat-predicted_latitude))+1)  # Second value: longitude
+    predicted_longitude = (start_lon - (0.7*float(start_lat-predicted_latitude))+1)  # Second value: longitude
 
     # Convert them to strings
     trash_latitude_str = str(predicted_latitude)
