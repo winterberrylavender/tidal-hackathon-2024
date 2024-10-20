@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import tensorflow as tf
 import numpy as np
+import math
 # Load the model
 #from tensorflow.python.keras.engine.training_v1 import Model
 
@@ -41,7 +42,7 @@ def interact(start_lat, start_lon):
 
     # Accessing the predicted latitude and longitude from the prediction
     predicted_latitude = prediction[0][0]  # First value: latitude
-    predicted_longitude = (start_lon - (start_lat-predicted_latitude))  # Second value: longitude
+    predicted_longitude = (start_lon - (0.7(start_lat-predicted_latitude))+1)  # Second value: longitude
 
     # Convert them to strings
     trash_latitude_str = str(predicted_latitude)
