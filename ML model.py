@@ -114,7 +114,7 @@ def build_cnn_lstm_model(input_shape_temporal, input_shape_spatial):
     x = Dense(64, activation='relu')(combined)
     x = Dropout(0.3)(x)
     x = Dense(32, activation='relu')(x)
-    output = Dense(1)(x)  # Output layer (e.g., future depth or current)
+    output = Dense(2)(x)  # Output layer (e.g., future depth or current)
 
     # Create the model
     model = Model(inputs=[temporal_input, spatial_input], outputs=output)
@@ -125,7 +125,7 @@ def build_cnn_lstm_model(input_shape_temporal, input_shape_spatial):
     return model
 
 # Train, cross-validate, and save the model
-def train_cnn_lstm_model(X_spatial, X_temporal, y, model_save_path='cnn_lstm_trash_model.h5'):
+def train_cnn_lstm_model(X_spatial, X_temporal, y, model_save_path='cnn_lstm_trash_model`.h5'):
     # Ensure the folder 'models' exists in your project
     model_folder = os.path.join(os.getcwd(), 'models')
     os.makedirs(model_folder, exist_ok=True)
