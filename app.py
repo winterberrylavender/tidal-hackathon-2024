@@ -24,16 +24,18 @@ def predict():
     close = port_data.find_closest_port(latitude, longitude)
     port_latitude=float(close['latitude'])
     port_longitude=float(close['longitude'])
+    port_distance=float(close['distance'])
     trash_latitude, trash_longitude = ml_interact.interact(latitude,longitude)
+    trash_distance=port_data.haversine(port_latitude,port_longitude,float(trash_latitude),float(trash_longitude))
     # Simulated result for demonstration purposes
     result = {
-        'patchLocation': longitude,
-        'trashAmount': latitude,
         'portLocation': close['name'],
         'portLatitude': port_latitude,
         'portLongitude': port_longitude,
+        'portDistance' : port_distance,
         'trashLatitude': trash_latitude,
         'trashLongitude': trash_longitude,
+        'trashDistance': trash_distance,
     }
 
     return jsonify(result)

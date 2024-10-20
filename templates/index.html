@@ -34,13 +34,14 @@
 
         <div id="result" class="prediction-result" style="display: none;">
             <h2>Prediction Result</h2>
-            <p id="patch-location"></p>
-            <p id="trash-amount"></p>
             <p id="port-location"></p>
             <p id="port-latitude"></p>
             <p id="port-longitude"></p>
+            <p id="port-distance"></p>
             <p id="trash-latitude"></p>
             <p id="trash-longitude"></p>
+            <p id="trash-distance"></p>
+
         </div>
     </div>
 
@@ -80,13 +81,14 @@
         });
 
         const result = await response.json();
-        document.getElementById('patch-location').textContent = 'Closest Trash Patch: ' + result.patchLocation;
-        document.getElementById('trash-amount').textContent = 'Estimated Trash Amount: ' + result.trashAmount;
+
         document.getElementById('port-location').textContent = 'Closest Port: ' + result.portLocation;
         document.getElementById('port-latitude').textContent = 'Port Latitude: ' + result.portLatitude;
         document.getElementById('port-longitude').textContent = 'Port Longitude: ' + result.portLongitude;
+        document.getElementById('port-longitude').textContent = 'Port Distance: ' + result.portDistance + ' km';
         document.getElementById('trash-latitude').textContent = 'Trash Latitude: ' + result.trashLatitude;
         document.getElementById('trash-longitude').textContent = 'Trash Longitude: ' + result.trashLongitude;
+        document.getElementById('trash-distance').textContent = 'Trash Distance: ' + result.trashDistance + ' km';
         document.getElementById('result').style.display = 'block';
     };
 
