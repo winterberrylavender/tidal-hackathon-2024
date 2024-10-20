@@ -11,8 +11,8 @@ def predict():
     # Here you can add your logic to process the input data
     date = request.json.get('date')
     time = request.json.get('time')
-    latitude = request.json.get('latitude')
-    longitude = request.json.get('longitude')
+    latitude = float(request.json.get('latitude'))
+    longitude = float(request.json.get('longitude'))
 
     # Simulated result for demonstration purposes
     result = {

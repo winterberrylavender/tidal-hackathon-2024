@@ -1,6 +1,7 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #81aae0;
+    font-family: 'Lato', sans-serif;
+    background-color: #1a1a2e; /* Darker background for a bold look */
+    color: #e0e0e0; /* Light text for contrast */
     margin: 0;
     padding: 0;
 }
@@ -13,13 +14,16 @@ body {
 
 h1 {
     text-align: center;
-    color: #4332e0;
-    font: 300;
+    color: #e94560; /* Bold color for header */
+    font-size: 2.5em;
+    margin-bottom: 20px;
 }
 
 #map {
     height: 400px;
     margin-bottom: 20px;
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
 }
 
 form {
@@ -31,11 +35,22 @@ input[type="date"], input[type="time"], button {
     margin: 10px;
     padding: 10px;
     font-size: 16px;
+    border-radius: 4px;
+    border: none;
+
+button {
+    background-color: #e94560; 
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #d63447; 
 }
 
 .prediction-result {
     margin-top: 20px;
     padding: 10px;
-    background-color: #fff;
-    border: 1px solid #ccc;
+    background-color: #16213e; 
+    border-radius: 8px;
 }
