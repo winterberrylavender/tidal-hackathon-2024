@@ -1,9 +1,11 @@
-import kagglehub
 
+
+''''import kagglehub
 # Download latest version
 path = kagglehub.dataset_download("zvr842/international-portsheds")
 
-print("Path to dataset files:", path)
+print("Path to dataset files:", path)'''
+
 
 import pandas as pd
 from math import radians, cos, sin, sqrt, atan2
@@ -35,10 +37,12 @@ def find_closest_port(user_lat, user_lon):
     return closest_port
 
 # User input
-user_lat = float(input("Enter your latitude: "))
-user_lon = float(input("Enter your longitude: "))
+#user_lat = float(input("Enter your latitude: "))
+#user_lon = float(input("Enter your longitude: "))
+
 
 # Find and display the closest port
+'''
 closest_port = find_closest_port(user_lat, user_lon)
 print(f"The closest port is {closest_port['name']} in {closest_port['country_code']} at a distance of {closest_port['distance']:.2f} km.")
-print(f"The latitude is {closest_port['latitude']} and the longitude is {closest_port['longitude']}")
+print(f"The latitude is {closest_port['latitude']} and the longitude is {closest_port['longitude']}")'''

@@ -29,6 +29,7 @@
             <h2>Prediction Result</h2>
             <p id="patch-location"></p>
             <p id="trash-amount"></p>
+            <p id="port-location"></p>
         </div>
     </div>
 
@@ -70,6 +71,7 @@
             const result = await response.json();
             document.getElementById('patch-location').textContent = 'Closest Trash Patch: ' + result.patchLocation;
             document.getElementById('trash-amount').textContent = 'Estimated Trash Amount: ' + result.trashAmount;
+            document.getElementById('port-location').textContent = 'Closest Port: ' + result.portLocation;
             document.getElementById('result').style.display = 'block';
         };
     </script>

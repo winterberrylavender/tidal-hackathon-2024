@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-
+import port_data
 app = Flask(__name__)
 
 @app.route('/')
@@ -13,11 +13,14 @@ def predict():
     time = request.json.get('time')
     latitude = float(request.json.get('latitude'))
     longitude = float(request.json.get('longitude'))
+    close=port_data.find_closest_port(latitude,longitude)
 
     # Simulated result for demonstration purposes
     result = {
         'patchLocation': longitude,
         'trashAmount': latitude,
+        'portLocation': close['name'],
+        'closest Port': close['name'],
     }
     
     return jsonify(result)
